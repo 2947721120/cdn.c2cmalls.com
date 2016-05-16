@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>CDN-</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="https://cdn.c2cmalls.com/bootswatch/paper/bootstrap.css" media="screen">
+    <link rel="stylesheet" href="https://cdn.c2cmalls.com/bootswatch/assets/css/custom.min.css">
+	<link href="https://cdn.c2cmalls.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.c2cmalls.com/bootswatch/bower_components/html5shiv/dist/html5shiv.js"></script>
+      <script src="https://cdn.c2cmalls.com/bootswatch/bower_components/respond/dest/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a href="../" class="navbar-brand">CDN</a>
+          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-main">
+          <ul class="nav navbar-nav">
+	   <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes">主题<span class="caret"></span></a>
+              <ul class="dropdown-menu" aria-labelledby="themes">
+                <li><a href="/bootswatch/default/">Default</a></li>
+                <li class="divider"></li>
+                <li><a href="/bootswatch/cerulean/">Cerulean</a></li>
+                <li><a href="/bootswatch/cosmo/">Cosmo</a></li>
+                <li><a href="/bootswatch/cyborg/">Cyborg</a></li>
+                <li><a href="/bootswatch/darkly/">Darkly</a></li>
+                <li><a href="/bootswatch/flatly/">Flatly</a></li>
+                <li><a href="/bootswatch/journal/">Journal</a></li>
+                <li><a href="/bootswatch/lumen/">Lumen</a></li>
+                <li><a href="/bootswatch/paper/">Paper</a></li>
+                <li><a href="/bootswatch/readable/">Readable</a></li>
+                <li><a href="/bootswatch/sandstone/">Sandstone</a></li>
+                <li><a href="/bootswatch/simplex/">Simplex</a></li>
+                <li><a href="/bootswatch/slate/">Slate</a></li>
+                <li><a href="/bootswatch/spacelab/">Spacelab</a></li>
+                <li><a href="/bootswatch/superhero/">Superhero</a></li>
+                <li><a href="/bootswatch/united/">United</a></li>
+                <li><a href="/bootswatch/yeti/">Yeti</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="../help/">使用帮助</a>
+            </li>
+            <li>
+              <a href="/3.4.0_0/index.html">json编辑器</a>
+            </li>
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="download">其他项目 <span class="caret"></span></a>
+              <ul class="dropdown-menu" aria-labelledby="download">
+                <li><a href="/google-blockly-ad/demos/index.html">代码生成器</a></li>
+                <li class="divider"></li>
+                <li><a href="/font-awesome-animation/0.0.7/index.html">字体真棒动画版</a></li>
+                <li><a href="/Icomoon/index.html">字体图标制作</a></li>
+                <li class="divider"></li>
+                <li><a href="http://1.icomo.sinaapp.com/bt3.html">bS布局编辑器</a></li>
+                <li><a href="http://1.icomo.sinaapp.com/Bootstrap_biao.html">BS表单生成器</a></li>
+                <li class="divider"></li>
+                <li><a href="/uikit-develop/index.html">uk框架</a></li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="cdn.html" target="_blank">谷歌字体</a></li>
+            <li><a href="https://cdnjs.c2cbc.com" target="_blank">谷歌前端库</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="page-header" id="banner">
+      <!-- Navbar
+      ================================================== -->
+	      <div class="row">
+          <div class="col-lg-12">
+	  <div class="jumbotron">
+  <h1>字体真棒使用</h1>
+</div></div></div>
+	     <div class="form-group">
+		<div ng-app="cdnjs" ng-controller="cdnjsCtrl" ng-init="">
+	<div class="row"> 
+		<div class="col-xs-6">
+			关键词过滤
+			<input class="form-control" ng-change="lib='';ver='';filtered = (libs | filter : libfilter | orderBy: 'toString()')" ng-model="libfilter"></input>
+		</div>
+		<div class="col-xs-4">
+			选择库 <span class="badge ng-cloak">{{filtered.length}}</span>
+			<select class="form-control" ng-model="lib" ng-change="ver='';" ng-options="opt for opt in filtered"></select>
+		</div>
+		<div class="col-xs-2">
+			选择版本 <span class="badge ng-cloak">{{data[lib]['v'].length}}</span>
+			<select class="form-control" ng-model="ver" ng-options="opt for opt in data[lib]['v']"></select>
+		</div>
+	</div>
+	<hr>
+	<ul class="list-group">
+		<li class="list-group-item" ng-repeat="item in data[lib]['i']" ng-show="lib != '' && ver != ''" ng-mouseover="canShow = true" ng-mouseleave="canShow = false">
+			<span id="span{{$index}}"class="ng-cloak">https://cdn.c2cmalls.com/ajax/libs/{{lib + '/' + ver + '/' + item}}</span>
+			<div class="btn-group" ng-show="canShow">
+				<button type="button" class="btn btn-primary btn-xs" data-clipboard-target="span{{$index}}">复制url</button>				
+			</div>
+          <script>
+            $(function(){
+              var buttons=$('button[data-clipboard-target]').get();
+              var client = new ZeroClipboard( buttons );
+              client.on( "ready", function( readyEvent ) {
+                client.on( "aftercopy", function( event ) {
+                  var infoDiv='<div  id="infodiv" style="position:fixed;top:5px;left:5%;width:60%;background:green;opacity:0.5;color:#fff;padding:10px 100px;display:none;">复制成功！'+event.data["text/plain"]+'</div>';
+                  $(document.body).append(infoDiv);
+                  $('#infodiv').slideToggle('slow').delay (1500).fadeOut('slow',function(){
+                    $(this).remove();
+                  });
+                });
+              });
+            })
+          </script>
+		</li>
+	</ul>
+		<script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+<script src="http://cdn.bootcss.com/zeroclipboard/2.2.0/ZeroClipboard.min.js"></script>
+	<script src="https://cdn.c2cmalls.com/ajax/libs/angular.js/1.2.16/angular.js"></script>
+	<script src="https://cdn.c2cmalls.com/ajax/libs/angular-ui-bootstrap/0.12.0/ui-bootstrap-tpls.js"></script>
+	<script>
+		var cdnjs = angular.module('cdnjs', ['ui.bootstrap']);
+		cdnjs.controller('cdnjsCtrl', function ($scope, $log, $http) {
+			$scope.libfilter = '';
+			$scope.lib = '';
+			$scope.ver = '';
+			$scope.filtered = [];
+			$http.get('https://cdn.c2cmalls.com/data.json').then(function(res){
+				$scope.data = res.data;
+				$scope.libs = [];
+				for(key in $scope.data){
+					$scope.libs.push(key);
+				}
+				$scope.filtered = $scope.libs;
+			});
+		});
+	</script>
+</div>
+</div>
+</div>
+<script>
+$(function(){
+    var buttons=$('button[data-clipboard-target]').get();
+	var client = new ZeroClipboard( buttons );
+    client.on( "ready", function( readyEvent ) {
+        client.on( "aftercopy", function( event ) {
+            var infoDiv='<div  id="infodiv" style="position:fixed;top:5px;left:5%;width:60%;background:green;opacity:0.5;color:#fff;padding:10px 100px;display:none;">复制成功！'+event.data["text/plain"]+'</div>';
+			$(document.body).append(infoDiv);
+			$('#infodiv').slideToggle('slow').delay (1500).fadeOut('slow',function(){
+				$(this).remove();
+			});    
+        });
+    });
+})
+</script>
+    </div>
+    <script src="https://cdn.c2cmalls.com/ajax/libs/jquery/1.10.2/jquery.js"></script>
+    <script src="https://cdn.c2cmalls.com/bootswatch/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.c2cmalls.com/bootswatch/assets/js/custom.js"></script>
+  </body>
+</html>
